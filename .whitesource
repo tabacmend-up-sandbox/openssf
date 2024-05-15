@@ -1,0 +1,15 @@
+{
+  "settingsInheritedFrom": "tabacmend-up-sandbox/whitesource-config@main",
+"remediateSettings": {
+    "workflowRules": {
+      "enabled": false
+    },
+    "enableRenovate": true,
+    "extends": [
+       "config:recommended",
+       "mergeConfidence:all-badges",
+       "github>mend-toolkit/mend-examples//Repo-Integration/Renovate/smart-merge",
+       "security:openssf-scorecard"
+      ]
+  }
+}
