@@ -1,15 +1,49 @@
 {
-  "settingsInheritedFrom": "tabacmend-up-sandbox/whitesource-config@main",
-"remediateSettings": {
-    "workflowRules": {
-      "enabled": false
-    },
-    "enableRenovate": true,
-    "extends": [
-       "config:recommended",
-       "mergeConfidence:all-badges",
-       "github>mend-toolkit/mend-examples//Repo-Integration/Renovate/smart-merge",
-       "security:openssf-scorecard"
-      ]
-  }
+    "settingsInheritedFrom": "tabacmend-up-sandbox/whitesource-config@main",
+    "remediateSettings": {
+        "workflowRules": {
+            "enabled": false
+        },
+        "enableRenovate": true,
+        "extends": [
+            "config:recommended",
+            "github>mend-toolkit/mend-examples//Repo-Integration/Renovate/smart-merge"
+        ],
+        "packageRules": [
+            {
+                "matchDatasources": [
+                    "go",
+                    "maven",
+                    "npm",
+                    "nuget",
+                    "packagist",
+                    "pypi",
+                    "rubygems"
+                ],
+                "matchUpdateTypes": [
+                    "patch",
+                    "minor",
+                    "major"
+                ],
+                "matchSourceUrlPrefixes": [
+                    "https://github.com/"
+                ],
+                "prBodyDefinitions": {
+                    "OpenSSF": "[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/{{sourceRepo}}/badge)](https://securityscorecards.dev/viewer/?uri=github.com/{{sourceRepo}})"
+                },
+                "prBodyColumns": [
+                    "Package",
+                    "Type",
+                    "Change",
+                    "Update",
+                    "Pending",
+                    "OpenSSF",
+                    "Age",
+                    "Adoption",
+                    "Passing",
+                    "Confidence"
+                ]
+            }
+        ]
+    }
 }
